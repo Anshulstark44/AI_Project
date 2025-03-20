@@ -73,3 +73,59 @@ def course_recommender(course_list):
         if c == no_of_reco:
             break
     return rec_course
+
+
+
+
+
+#CONNECT TO DATABASE
+
+connection = pymysql.connect(host='localhost',user='root',password='(Add your password)',db='cv')
+cursor = connection.cursor()
+
+def insert_data(name,email,res_score,timestamp,no_of_pages,reco_field,cand_level,skills,recommended_skills,courses):
+    DB_table_name = 'user_data'
+    insert_sql = "insert into " + DB_table_name + """
+    values (0,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    rec_values = (name, email, str(res_score), timestamp,str(no_of_pages), reco_field, cand_level, skills,recommended_skills,courses)
+    cursor.execute(insert_sql, rec_values)
+    connection.commit()
+
+st.set_page_config(
+   page_title="AI Resume Analyzer",
+   page_icon='./Logo/logo2.png',
+)
+def run():
+    img = Image.open('./Logo/logo2.png')
+    # img = img.resize((250,250))
+    st.image(img)
+    st.title("AI Resume Analyser")
+    st.sidebar.markdown("# Choose User")
+    activities = ["User", "Admin"]
+    choice = st.sidebar.selectbox("Choose among the given options:", activities)
+    link = '[©Developed by Dr,Briit](https://www.linkedin.com/in/mrbriit/)'
+    st.sidebar.markdown(link, unsafe_allow_html=True)
+
+
+    # Create the DB
+    db_sql = """CREATE DATABASE IF NOT EXISTS CV;"""
+    cursor.execute(db_sql)
+
+    # Create table
+    DB_table_name = 'user_data'
+    table_sql = "CREATE TABLE IF NOT EXISTS " + DB_table_name + """
+                    (ID INT NOT NULL AUTO_INCREMENT,
+                     Name varchar(500) NOT NULL,
+                     Email_ID VARCHAR(500) NOT NULL,
+                     resume_score VARCHAR(8) NOT NULL,
+                     Timestamp VARCHAR(50) NOT NULL,
+                     Page_no VARCHAR(5) NOT NULL,
+                     Predicted_Field BLOB NOT NULL,
+                     User_level BLOB NOT NULL,
+                     Actual_skills BLOB NOT NULL,
+                     Recommended_skills BLOB NOT NULL,
+                     Recommended_courses BLOB NOT NULL,
+                     PRIMARY KEY (ID));
+                    """
+    cursor.execute(table_sql)
+    

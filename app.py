@@ -196,3 +196,51 @@ def run():
                         st.markdown('''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job</h4>''',unsafe_allow_html=True)
                         rec_course = course_recommender(ds_course)
                         break
+                    
+                    ## Web development recommendation
+                    elif i.lower() in web_keyword:
+                        print(i.lower())
+                        reco_field = 'Web Development'
+                        st.success("** Our analysis says you are looking for Web Development Jobs **")
+                        recommended_skills = ['React','Django','Node JS','React JS','php','laravel','Magento','wordpress','Javascript','Angular JS','c#','Flask','SDK']
+                        recommended_keywords = st_tags(label='### Recommended skills for you.',
+                        text='Recommended skills generated from System',value=recommended_skills,key = '3')
+                        st.markdown('''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',unsafe_allow_html=True)
+                        rec_course = course_recommender(web_course)
+                        break
+
+                    ## Android App Development
+                    elif i.lower() in android_keyword:
+                        print(i.lower())
+                        reco_field = 'Android Development'
+                        st.success("** Our analysis says you are looking for Android App Development Jobs **")
+                        recommended_skills = ['Android','Android development','Flutter','Kotlin','XML','Java','Kivy','GIT','SDK','SQLite']
+                        recommended_keywords = st_tags(label='### Recommended skills for you.',
+                        text='Recommended skills generated from System',value=recommended_skills,key = '4')
+                        st.markdown('''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',unsafe_allow_html=True)
+                        rec_course = course_recommender(android_course)
+                        break
+
+                    ## IOS App Development
+                    elif i.lower() in ios_keyword:
+                        print(i.lower())
+                        reco_field = 'IOS Development'
+                        st.success("** Our analysis says you are looking for IOS App Development Jobs **")
+                        recommended_skills = ['IOS','IOS Development','Swift','Cocoa','Cocoa Touch','Xcode','Objective-C','SQLite','Plist','StoreKit',"UI-Kit",'AV Foundation','Auto-Layout']
+                        recommended_keywords = st_tags(label='### Recommended skills for you.',
+                        text='Recommended skills generated from System',value=recommended_skills,key = '5')
+                        st.markdown('''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',unsafe_allow_html=True)
+                        rec_course = course_recommender(ios_course)
+                        break
+
+                    ## Ui-UX Recommendation
+                    elif i.lower() in uiux_keyword:
+                        print(i.lower())
+                        reco_field = 'UI-UX Development'
+                        st.success("** Our analysis says you are looking for UI-UX Development Jobs **")
+                        recommended_skills = ['UI','User Experience','Adobe XD','Figma','Zeplin','Balsamiq','Prototyping','Wireframes','Storyframes','Adobe Photoshop','Editing','Illustrator','After Effects','Premier Pro','Indesign','Wireframe','Solid','Grasp','User Research']
+                        recommended_keywords = st_tags(label='### Recommended skills for you.',
+                        text='Recommended skills generated from System',value=recommended_skills,key = '6')
+                        st.markdown('''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',unsafe_allow_html=True)
+                        rec_course = course_recommender(uiux_course)
+                        break
